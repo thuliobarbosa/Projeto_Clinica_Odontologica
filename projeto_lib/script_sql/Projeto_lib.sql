@@ -111,7 +111,7 @@ SELECT nomeProfissional,
 	duracao,
 	nomePaciente
 FROM agendamento 
-WHERE dataAgendamento BETWEEN 'Parâmetro desejado' AND 'Parâmetro desejado'
+WHERE dataAgendamento BETWEEN '2020-01-01' AND '2020-05-30'
 ORDER BY nomeProfissional;
 
 --> 3
@@ -121,7 +121,7 @@ SELECT nomeProfissional,
 	duracao,
 	nomePaciente
 FROM agendamento 
-WHERE dataAgendamento BETWEEN 'Parâmetro desejado' AND 'Parâmetro desejado'
+WHERE dataAgendamento BETWEEN '2020-04-01' AND '2020-08-20'
 	AND tipo = 'Parâmetro desejado'
 ORDER BY dataAgendamento DESC, 
 	horario;
@@ -133,12 +133,12 @@ SELECT cpf,
 	dataNascimento,
 	(TIMESTAMPDIFF(YEAR, dataNascimento, CURDATE())) AS idade
 FROM agendamento " +
-WHERE MONTH(dataNascimento) = 'Parâmetro desejado';
+WHERE MONTH(dataNascimento) = '6';
 
 --> 5
 SELECT nomeProfissional
 FROM agendamento
-WHERE nomeProfissional LIKE '% Parâmetro desejado %'
+WHERE nomeProfissional LIKE '%la%'
 ORDER BY nomeProfissional;
 
 --> 6
@@ -167,13 +167,13 @@ HAVING SUM(valorConsulta) > 500;
 SELECT COUNT(*) AS qtdConsultas,
 	SUM((valorConsulta - ((valorConsulta * percDesconto)/100))) AS valorTotal
 FROM agendamento
-WHERE MONTH(dataAgendamento) = 'Parâmetro desejado'; 
+WHERE MONTH(dataAgendamento) = '6'; 
 
 --> 10
 SELECT nomeProfissional, 
 	COUNT(*) AS qtdConsultas
 FROM agendamento
-WHERE MONTH(dataAgendamento) = 'Parâmetro desejado'
+WHERE MONTH(dataAgendamento) = '7'
 GROUP BY nomeProfissional
 HAVING qtdConsultas >= 10
 ORDER BY qtdConsultas DESC;
